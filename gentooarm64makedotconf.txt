@@ -1,0 +1,53 @@
+####### gentooarm64makedotconf.txt
+
+##### Read and edit this file before you copy it.
+##### To back up the original /etc/portage/make.conf, run the command below:
+##### 	cp /etc/portage/make.conf{,.bak}
+##### In Live CD before chrooting:
+##### 	cp mnt/gentoo/etc/portage/make.conf{,.bak}
+##### Copy contents below into /etc/portage/make.conf (in Live CD before chrooting: /etc/portage/make.conf).
+
+COMMON_FLAGS="-march=armv8-a+crc"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+LDFLAGS="${COMMON_FLAGS} -Wl,-O2 -Wl,--as-needed -Wl,--hash-style=gnu -Wl,--sort-common -Wl,--strip-all"
+MAKEOPTS="-j6"
+CPU_FLAGS_ARM="edsp neon thumb vfp vfpv3 vfpv4 vfp-d32 aes sha1 sha2 crc32 v4 v5 v6 v7 v8 thumb2"
+
+CHOST="aarch64-pc-linux-gnu"
+EMERGE_DEFAULT_OPTS="--with-bdeps=y --verbose=y --load-average --keep-going --deep"
+PORTDIR="/var/db/repos/gentoo"
+DISTDIR="/var/cache/distfiles"
+PKGDIR="/var/cache/binpkgs"
+# PORTAGE_TMPDIR="/tmp"
+
+LC_MESSAGES=C
+
+USE="accessibility acpi alsa aria2 blkid bluetooth browser-integration ccache cjk colord connection-sharing crash-handler crypt cups dbus dhclient discover display-manager efi elogind firewall flatpak fortran gdbm glamor gold graphite grub gtk handbook http2 hwdb icu iwd jack kde kwallet layers libsamplerate lto minizip network networkmanager nftables nvidia openmp openssl pgo plymouth policykit ppp pulseaudio sddm sdk smack smart staging sudo thunderbolt udev udisks vaapi vdpau vulkan wacom wallpapers wifi X -bindist -consolekit -debug -dhcpcd -doc -gnome -gnome-keyring -gnome-shell -gpm -iptables -mdev -netifrc -oss -static-libs -test -valgrind -wayland"
+ACCEPT_LICENSE="*"
+ACCEPT_KEYWORDS="arm64"
+L10N="en-US zh-CN en zh"
+LINGUAS="en-US zh-CN en zh"
+AUTO_CLEAN="yes"
+
+GRUB_PLATFORMS="efi-64"
+#VIDEO_CARDS="intel i965 iris nvidia"
+#ALSA_CARDS="hda-intel"
+INPUT_DEVICES="libinput synaptics"
+MICROCODE_SIGNATURES="-S"
+
+LLVM_TARGETS="ARM;AArch64"
+
+GENTOO_MIRRORS="https://mirrors.ustc.edu.cn/gentoo/"
+
+FETCHCOMMAND="/usr/bin/aria2c -d \${DISTDIR} -o \${FILE} --allow-overwrite=true --max-tries=5 --max-file-not-found=2 --max-concurrent-downloads=5 --connect-timeout=5 --timeout=5 --split=5 --min-split-size=2M --lowest-speed-limit=20K --max-connection-per-server=9 --uri-selector=feedback \${URI}"
+RESUMECOMMAND="${FETCHCOMMAND}"
+
+FEATURES="ccache -test"
+CCACHE_DIR="/var/cache/ccache"
+
+# RUSTC_WRAPPER=/usr/bin/sccache
+# SCCACHE_DIR=/var/cache/sccache
+# SCCACHE_MAX_FRAME_LENGTH=104857600
