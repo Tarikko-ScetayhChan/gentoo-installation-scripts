@@ -1,5 +1,5 @@
-####### gentooamd64makedotconf.txt
-####### https://github.com/Tarikko-ScetayhChan/tasc-gentooscripts/
+####### gentoo-amd64-makedotconf.txt
+####### https://github.com/Tarikko-ScetayhChan/tascscripts/
 
 ##### Read and edit this file before you copy it.
 ##### To back up the original /etc/portage/make.conf, run the command below:

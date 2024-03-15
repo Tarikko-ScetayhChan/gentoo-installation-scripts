@@ -1,7 +1,7 @@
 #!/bin/sh
 
-	####### gentooinstallchroot.sh
-	####### https://github.com/Tarikko-ScetayhChan/tasc-gentooscripts/
+	####### gentoo-installchroot.sh
+	####### https://github.com/Tarikko-ScetayhChan/tascscripts/
 
 	##### Read and edit this script before you chmod +x and run it.
 

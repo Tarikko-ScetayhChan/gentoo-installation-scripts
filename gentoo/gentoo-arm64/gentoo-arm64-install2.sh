@@ -1,7 +1,7 @@
 #!/bin/sh
 
-	####### gentooarm64install2.sh
-	####### https://github.com/Tarikko-ScetayhChan/tasc-gentooscripts/
+	####### gentoo-arm64-install2.sh
+	####### https://github.com/Tarikko-ScetayhChan/tascscripts/
 
 	##### Read and edit this script before chmod +x and run it.
 
