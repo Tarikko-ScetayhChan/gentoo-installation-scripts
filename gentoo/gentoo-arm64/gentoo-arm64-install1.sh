@@ -38,7 +38,7 @@ export path_root_parition=/dev/nvme0n1p4
 export fs_boot_parition=ext4
 export fs_root_parition=ext4
 export address_stage3=https://mirrors.ustc.edu.cn/gentoo/releases/arm64/autobuilds/current-stage3-arm64-openrc/
-export address_rsync=rsync.mirrors.ustc.edu.cn
+export site_rsync=rsync.mirrors.ustc.edu.cn
 echo -e "    nameserver=${nameserver}"
 echo -e "    size_efi_parition=${size_efi_parition}"
 echo -e "    size_boot_parition=${size_boot_parition}"
@@ -51,7 +51,7 @@ echo -e "    path_root_parition=${path_root_parition}"
 echo -e "    fs_boot_parition=${fs_boot_parition}"
 echo -e "    fs_root_parition=${fs_root_parition}"
 echo -e "    address_stage3=${address_stage3}"
-echo -e "    address_rsync=${address_rsync}"
+echo -e "    site_rsync=${site_rsync}"
 
 echo
 sleep 5
@@ -114,28 +114,8 @@ echo
 echo -e "    \e[32m==> Step 2: \e[0mTo partition the disk, create file"
 echo -e "        systems and mount them"
 echo
-echo "
-g
-n
-
-
-+${size_efi_parition}
-t
-1
-n
-
-
-+${size_boot_partition}
-n
-
-
-+${size_swap_partition}
-n
-
-
-
-w
-" | fdisk ${path_disk}
+echo -e "g\nn\n1\n\n+${size_efi_parition}\nt\n1\nn\n2\n\n+${size_boot_parition}\nn\n3\n\n+${size_swap_parition}\nn\n4\n\n\nw" > ./gentoo-arm64-install1-fdisk.txt
+cat ./gentoo-arm64-install1-fdisk.txt | fdisk ${path_disk}
 mkfs.fat -F 32 ${path_efi_parition} &&
 mkfs.${fs_boot_parition} ${path_boot_parition} &&
 mkswap ${path_swap_parition} &&
@@ -157,17 +137,16 @@ cd /mnt/gentoo &&
 links ${address_stage3} &&
 tar xpvf *.tar.xz --xattrs-include='*.*' --numeric-owner &&
 mv /mnt/gentoo/etc/portage/make.conf{,.bak};
-mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf;
 mkdir -p -v /mnt/gentoo/etc/portage/repos.conf &&
 cp -v /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
 mv /mnt/gentoo/etc/portage/repos.conf/gentoo.conf{,.bak};
-sed 's/rsync.gentoo.org/rsync.mirrors.ustc.edu.cn/g' /mnt/gentoo/etc/portage/repos.conf/gentoo.conf.bak >> /mnt/gentoo/etc/portage/repos.conf/gentoo.conf;
+sed "s/rsync.gentoo.org/${site_rsync}/g" /etc/portage/repos.conf/gentoo.conf.bak > /etc/portage/repos.conf/gentoo.conf;
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/ &&
 
 echo
 echo -e "    \e[32m==> Step 4: \e[0mTo chroot"
 echo
-echo "export PS1='(chroot) \[\033]0;\u@\h:\w\007\]\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '" >> /mnt/gentoo/root/.bashrc;
+echo "export PS1='(chroot) \[\033]0;\u@\h:\w\007\]\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '" > /mnt/gentoo/root/.bashrc;
 echo "alias l='ls -ahl --color'" >> /mnt/gentoo/root/.bashrc;
 echo "alias n='neofetch | lolcat'" >> /mnt/gentoo/root/.bashrc;
 echo "alias v='nano ~/.bashrc && source ~/.bashrc'" >> /mnt/gentoo/root/.bashrc;
