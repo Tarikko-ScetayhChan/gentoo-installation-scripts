@@ -1,5 +1,25 @@
-####### gentoo-arm64-makedotconf.txt
-####### https://github.com/Tarikko-ScetayhChan/tascscripts/
+####### -----------------------------------------------------
+####### |                   tascscripts                     |
+####### |        Copyright 2024 Tarikko-ScetayhChan         |
+####### |https://github.com/Tarikko-ScetayhChan/tascscripts/|
+####### -----------------------------------------------------
+####### -----------------------------------------------------
+####### |             gentoo-arm64-install2.sh              |
+####### -----------------------------------------------------
+####### This file is part of tascscripts.
+####### tascscripts is free software: you can redistribute it
+####### and/or modify it under the terms of the GNU General
+####### Public License as published by the Free Software
+####### Foundation, either version 3 of the License, or (at
+####### your option) any later version.
+####### tascscripts is distributed in the hope that it will
+####### be useful, but WITHOUT ANY WARRANTY; without even the
+####### implied warranty of MERCHANTABILITY or FITNESS FOR A
+####### PARTICULAR PURPOSE. See the GNU General Public
+####### License for more details.
+####### You should have received a copy of the GNU General
+####### Public License along with tascscripts. If not, see
+####### <https://www.gnu.org/licenses/>.
 
 ##### Read and edit this file before you copy it.
 ##### To back up the original /etc/portage/make.conf, run the command below:

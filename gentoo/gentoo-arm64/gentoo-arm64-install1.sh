@@ -68,15 +68,6 @@ echo -e "+x and run it."
 echo
 sleep 5
 
-echo -e "\e[32mInfo: \e[0mWhat this script is going to do are:"
-echo -e "1. To configure the network"
-echo -e "2. To partition the disk, create file systems and"
-echo -e "   mount them"
-echo -e "3. To download the stage file"
-echo -e "4. To chroot"
-echo
-sleep 5
-
 echo -e "\e[33mWarning: \e[0mYou will have 10 seconds to cancel this"
 echo -e "script."
 sleep 1
@@ -111,11 +102,14 @@ echo "domain localdomain" > /etc/resolv.conf &&
 echo "nameserver ${nameserver}" >> /etc/resolv.conf &&
 
 echo
-echo -e "    \e[32m==> Step 2: \e[0mTo partition the disk, create file"
-echo -e "        systems and mount them"
+echo -e "    \e[32m==> Step 2: \e[0mTo partition the disk"
 echo
 echo -e "g\nn\n1\n\n+${size_efi_parition}\nt\n1\nn\n2\n\n+${size_boot_parition}\nn\n3\n\n+${size_swap_parition}\nn\n4\n\n\nw" > ./gentoo-arm64-install1-fdisk.txt
 cat ./gentoo-arm64-install1-fdisk.txt | fdisk ${path_disk}
+
+echo
+echo -e "    \e[32m==> Step 3: \e[0mTo create file systems"
+echo
 mkfs.fat -F 32 ${path_efi_parition} &&
 mkfs.${fs_boot_parition} ${path_boot_parition} &&
 mkswap ${path_swap_parition} &&
@@ -123,6 +117,10 @@ mkfs.${fs_root_parition} ${path_root_parition} &&
 #fallocate -l 8G /mnt/gentoo/swapfile &&
 #chmod 600 /mnt/gentoo/swapfile &&
 #mkswap /mnt/gentoo/swapfile &&
+
+echo
+echo -e "    \e[32m==> Step 4: \e[0mTo mount file systems"
+echo
 mount ${path_root_parition} --mkdir /mnt/gentoo &&
 mount ${path_boot_parition} --mkdir /mnt/gentoo/boot &&
 mount ${path_efi_parition} --mkdir /mnt/gentoo/boot/efi &&
@@ -130,27 +128,27 @@ swapon ${path_swap_parition} &&
 #swapon /mnt/gentoo/swapfile &&
 
 echo
-echo -e "    \e[32m==> Step 3: \e[0mTo download the stage file"
+echo -e "    \e[32m==> Step 5: \e[0mTo download the stage file"
 echo
 hwclock --systohc;
 cd /mnt/gentoo &&
 links ${address_stage3} &&
 tar xpvf *.tar.xz --xattrs-include='*.*' --numeric-owner &&
+
+echo
+echo -e "    \e[32m==> Step 6: \e[0mTo chroot"
+echo
 mv /mnt/gentoo/etc/portage/make.conf{,.bak};
 mkdir -p -v /mnt/gentoo/etc/portage/repos.conf &&
 cp -v /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
 mv /mnt/gentoo/etc/portage/repos.conf/gentoo.conf{,.bak};
 sed "s/rsync.gentoo.org/${site_rsync}/g" /etc/portage/repos.conf/gentoo.conf.bak > /etc/portage/repos.conf/gentoo.conf;
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/ &&
-
-echo
-echo -e "    \e[32m==> Step 4: \e[0mTo chroot"
-echo
 echo "export PS1='(chroot) \[\033]0;\u@\h:\w\007\]\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '" > /mnt/gentoo/root/.bashrc;
-echo "alias l='ls -ahl --color'" >> /mnt/gentoo/root/.bashrc;
+echo "alias l='ls -ahlF --color'" >> /mnt/gentoo/root/.bashrc;
 echo "alias n='neofetch | lolcat'" >> /mnt/gentoo/root/.bashrc;
 echo "alias v='nano ~/.bashrc && source ~/.bashrc'" >> /mnt/gentoo/root/.bashrc;
-echo "alias em='nano /etc/portage/make.conf'" >> /mnt/gentoo/root/.bashrc;
+echo "alias emmc='nano /etc/portage/make.conf'" >> /mnt/gentoo/root/.bashrc;
 mount --types proc /proc /mnt/gentoo/proc &&
 mount --rbind /sys /mnt/gentoo/sys &&
 mount --make-rslave /mnt/gentoo/sys &&
