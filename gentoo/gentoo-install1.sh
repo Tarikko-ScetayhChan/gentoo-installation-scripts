@@ -6,7 +6,7 @@ echo -e "|        Copyright 2024 Tarikko-ScetayhChan         |"
 echo -e "|https://github.com/Tarikko-ScetayhChan/tascscripts/|"
 echo -e "-----------------------------------------------------"
 echo -e "-----------------------------------------------------"
-echo -e "|             gentoo-arm64-install1.sh              |"
+echo -e "|                gentoo-install1.sh                 |"
 echo -e "-----------------------------------------------------"
 echo -e "This file is part of tascscripts."
 echo -e "tascscripts is free software: you can redistribute it"
@@ -37,6 +37,7 @@ export path_swap_parition=/dev/nvme0n1p3
 export path_root_parition=/dev/nvme0n1p4
 export fs_boot_parition=ext4
 export fs_root_parition=ext4
+export size_swapfile=8G
 export address_stage3=https://mirrors.ustc.edu.cn/gentoo/releases/arm64/autobuilds/current-stage3-arm64-openrc/
 export site_rsync=rsync.mirrors.ustc.edu.cn
 echo -e "    nameserver=${nameserver}"
@@ -50,6 +51,7 @@ echo -e "    path_swap_parition=${path_swap_parition}"
 echo -e "    path_root_parition=${path_root_parition}"
 echo -e "    fs_boot_parition=${fs_boot_parition}"
 echo -e "    fs_root_parition=${fs_root_parition}"
+echo -e "    size_swapfile=${size_swapfile}"
 echo -e "    address_stage3=${address_stage3}"
 echo -e "    site_rsync=${site_rsync}"
 
@@ -114,9 +116,9 @@ mkfs.fat -F 32 ${path_efi_parition} &&
 mkfs.${fs_boot_parition} ${path_boot_parition} &&
 mkswap ${path_swap_parition} &&
 mkfs.${fs_root_parition} ${path_root_parition} &&
-#fallocate -l 8G /mnt/gentoo/swapfile &&
-#chmod 600 /mnt/gentoo/swapfile &&
-#mkswap /mnt/gentoo/swapfile &&
+fallocate -l ${size_swapfile} /mnt/gentoo/swapfile &&
+chmod 600 /mnt/gentoo/swapfile &&
+mkswap /mnt/gentoo/swapfile &&
 
 echo
 echo -e "    \e[32m==> Step 4: \e[0mTo mount file systems"
@@ -125,7 +127,7 @@ mount ${path_root_parition} --mkdir /mnt/gentoo &&
 mount ${path_boot_parition} --mkdir /mnt/gentoo/boot &&
 mount ${path_efi_parition} --mkdir /mnt/gentoo/boot/efi &&
 swapon ${path_swap_parition} &&
-#swapon /mnt/gentoo/swapfile &&
+swapon /mnt/gentoo/swapfile &&
 
 echo
 echo -e "    \e[32m==> Step 5: \e[0mTo download the stage file"
