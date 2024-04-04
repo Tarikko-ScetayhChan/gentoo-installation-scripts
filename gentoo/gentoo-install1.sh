@@ -39,7 +39,7 @@ export fs_boot_parition=ext4
 export fs_root_parition=ext4
 export size_swapfile=8G
 export address_stage3=https://mirrors.ustc.edu.cn/gentoo/releases/arm64/autobuilds/current-stage3-arm64-openrc/
-export site_rsync=rsync.mirrors.ustc.edu.cn
+export site_rsync=rsync://rsync.mirrors.ustc.edu.cn/gentoo-portage
 echo -e "    nameserver=${nameserver}"
 echo -e "    size_efi_parition=${size_efi_parition}"
 echo -e "    size_boot_parition=${size_boot_parition}"
@@ -143,8 +143,7 @@ echo
 mv /mnt/gentoo/etc/portage/make.conf{,.bak};
 mkdir -p -v /mnt/gentoo/etc/portage/repos.conf &&
 cp -v /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
-mv /mnt/gentoo/etc/portage/repos.conf/gentoo.conf{,.bak};
-sed "s/rsync.gentoo.org/${site_rsync}/g" /etc/portage/repos.conf/gentoo.conf.bak > /etc/portage/repos.conf/gentoo.conf;
+sed -i "s|rsync:\/\/rsync.gentoo.org\/gentoo-portage|${site_rsync}|g" /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
 cp --dereference /etc/resolv.conf /mnt/gentoo/etc/ &&
 echo "export PS1='(chroot) \[\033]0;\u@\h:\w\007\]\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] '" > /mnt/gentoo/root/.bashrc;
 echo "alias l='ls -ahlF --color'" >> /mnt/gentoo/root/.bashrc;
