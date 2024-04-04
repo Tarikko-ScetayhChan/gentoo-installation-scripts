@@ -21,12 +21,11 @@
 ####### Public License along with tascscripts. If not, see
 ####### <https://www.gnu.org/licenses/>.
 
-##### Read and edit this file before you copy it.
+##### Edit this file before you copy it.
 ##### To back up the original /etc/portage/make.conf, run the command below:
 ##### 	cp /etc/portage/make.conf{,.bak}
 ##### In Live CD before chrooting:
 ##### 	cp mnt/gentoo/etc/portage/make.conf{,.bak}
-##### Copy contents below into /etc/portage/make.conf (in Live CD before chrooting: /etc/portage/make.conf).
 
 COMMON_FLAGS="-march=native -O2 -pipe -finline-functions"
 #COMMON_FLAGS="-march=armv8-a+crc"
