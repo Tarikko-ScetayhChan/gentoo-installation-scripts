@@ -47,8 +47,9 @@ export PATH_SCRIPTS_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" &&
 source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf &&
 
 echo -e "\n    \e[32m==> Step 2: \e[0mTo update the @world set\n"; sleep 1
+etc-update;
 emerge --verbose --update --deep --newuse @world;
-etc-update &&
+etc-update;
 emerge --verbose --update --deep --newuse @world &&
 
 echo -e "\n    \e[32m==> Step 3: \e[0mTo To set the timezone and configure locates\n"; sleep 1
