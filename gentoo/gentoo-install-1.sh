@@ -53,7 +53,7 @@ mount -v ${path_efi_parition} --mkdir /mnt/gentoo/boot/efi &&
 swapon -v ${path_swap_parition} &&
 
 echo -e "\n\e[32m==> Step 9 of 20: \e[0mTo create swapfile\n"; sleep 1
-fallocate -l -v ${size_swapfile} /mnt/gentoo/swapfile &&
+fallocate -l ${size_swapfile} -v /mnt/gentoo/swapfile &&
 chmod 600 /mnt/gentoo/swapfile &&
 mkswap /mnt/gentoo/swapfile;
 
