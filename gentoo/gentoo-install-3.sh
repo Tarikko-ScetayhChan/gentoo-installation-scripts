@@ -7,18 +7,7 @@ echo -e "-----------------------------------------------------\n|               
 echo -e "\e[33mWarning: \e[0mEdit 'make.conf' before running this script.\n"
 sleep 5
 
-echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."
-sleep 1
-echo "5"
-sleep 1
-echo "4"
-sleep 1
-echo "3"
-sleep 1
-echo "2"
-sleep 1
-echo "1"
-sleep 1
+echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."; sleep 1; echo "5"; sleep 1; echo "4"; sleep 1; echo "3"; sleep 1; echo "2"; sleep 1; echo "1"; sleep 1
 
 echo -e "\n\e[32m==> Step 1 of TOTAL: \e[0mTo set the environment variables\n"; sleep 1
 export PATH_SCRIPTS_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" &&
@@ -29,6 +18,10 @@ etc-update;
 emerge --verbose --update --deep --newuse @world;
 etc-update;
 emerge --verbose --update --deep --newuse @world &&
+env-update;
+etc-update;
+source /etc/profile;
+export PS1="(chroot) ${PS1}";
 
 echo -e "\n\e[32m==> Step 3 of TOTAL: \e[0mTo To set the timezone and configure locates\n"; sleep 1
 echo "Asia/Shanghai" > /etc/timezone &&
@@ -36,5 +29,7 @@ emerge --config sys-libs/timezone-data &&
 nano /etc/locale.gen &&
 locale-gen &&
 eselect locale set C &&
-env-update &&
-source /etc/profile &&
+env-update;
+etc-update;
+source /etc/profile;
+export PS1="(chroot) ${PS1}";
