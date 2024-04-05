@@ -28,7 +28,6 @@ emerge-webrsync &&
 emerge --sync;
 
 echo -e "\n\e[32m==> Step 4 of 13: \e[0mTo copy 'make.conf'\n"; sleep 1
-cp -v /etc/portage/make.conf{,.bak};
 cat ${PATH_SCRIPTS_ROOT}/${makedotconf} > /etc/portage/make.conf;
 echo -e "\e[32m\n/etc/portage/make.conf\n-----------------------------------------------------\e[0m";
 cat /etc/portage/make.conf;
@@ -45,18 +44,15 @@ cat /etc/portage/package.use/00cpu-flags;
 echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 7 of 13: \e[0mTo install ccache, aria2 and sccache\n"; sleep 1
-emerge ccache aria2 sccache --autounmask-write --autounmask &&
-etc-update --automode -3 &&
-emerge ccache aria2 sccache --autounmask-write --autounmask &&
+emerge ccache aria2 &&
 
 echo -e "\n\e[32m==> Step 8 of 13: \e[0mTo configure ccache and aria2\n"; sleep 1
 sed -i --debug "s/#FETCHCOMMAND/FETCHCOMMAND/g" /etc/portage/make.conf &&
 sed -i --debug "s/#RESUMECOMMAND/RESUMECOMMAND/g" /etc/portage/make.conf &&
-sed -i --debug "s/#FEATURES/FFEATURES/g" /etc/portage/make.conf &&
+sed -i --debug "s/#FEATURES/FEATURES/g" /etc/portage/make.conf &&
 sed -i --debug "s/#CCACHE_DIR/CCACHE_DIR/g" /etc/portage/make.conf &&
 sed -i --debug "s/#RUSTC_WRAPPER/RUSTC_WRAPPER/g" /etc/portage/make.conf &&
-sed -i --debug "s/#SCCACHE_DIR/SCCACHE_DIR/g" /etc/portage/make.conf &&
-sed -i --debug "s/#SCCACHE_MAX_FRAME_LENGTH/SCCACHE_MAX_FRAME_LENGTH/g" /etc/portage/make.conf &&
+
 echo -e "\e[32m\n/etc/portage/make.conf\n-----------------------------------------------------\e[0m";
 cat /etc/portage/make.conf;
 echo -e "\e[32m-----------------------------------------------------\e[0m";

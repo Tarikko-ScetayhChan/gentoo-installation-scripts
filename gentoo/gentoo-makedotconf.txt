@@ -69,7 +69,7 @@ GENTOO_MIRRORS="https://mirrors.ustc.edu.cn/gentoo/"
 #FETCHCOMMAND="/usr/bin/aria2c -d \${DISTDIR} -o \${FILE} --allow-overwrite=true --max-tries=5 --max-file-not-found=2 --max-concurrent-downloads=5 --connect-timeout=5 --timeout=5 --split=5 --min-split-size=2M --lowest-speed-limit=20K --max-connection-per-server=9 --uri-selector=feedback \${URI}"
 #RESUMECOMMAND="${FETCHCOMMAND}"
 
-#FFEATURES="ccache -test"
+#FEATURES="ccache -test"
 #CCACHE_DIR="/var/cache/ccache"
 
 #RUSTC_WRAPPER=/usr/bin/sccache
