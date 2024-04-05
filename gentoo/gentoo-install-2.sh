@@ -29,8 +29,8 @@ emerge-webrsync &&
 emerge --sync;
 
 echo -e "\n\e[32m==> Step 4 of 13: \e[0mTo copy 'make.conf'\n"; sleep 1
-mv -v /etc/portage/make.conf{,.bak}
-cp -v ${PATH_SCRIPTS_ROOT}/${makedotconf} /mnt/gentoo/etc/portage/make.conf;
+mv -v /etc/portage/make.conf{,.bak};
+cp -v ${PATH_SCRIPTS_ROOT}/${makedotconf} /etc/portage/make.conf;
 
 echo -e "\n\e[32m==> Step 5 of 13: \e[0mTo install cpuid2cpuflags'\n"; sleep 1
 emerge cpuid2cpuflags &&
