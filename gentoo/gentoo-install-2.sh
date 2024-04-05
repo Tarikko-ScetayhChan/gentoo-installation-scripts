@@ -60,4 +60,4 @@ mv -v /etc/portage/make.conf{,.bak}
 cp -v ${PATH_SCRIPTS_ROOT}/gentoo-makedotconf.txt /mnt/gentoo/etc/portage/make.conf;
 
 echo -e "\n    \e[32m==> Step 5: \e[0mTo install ccache and aria2\n"; sleep 1
-emerge ccache aria2
+emerge ccache aria2 sccache
