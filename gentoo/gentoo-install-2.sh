@@ -6,7 +6,7 @@ echo -e "-----------------------------------------------------\n|               
 
 echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-2.conf'\nbefore running this script.\n"; sleep 5
 
-echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/${makedotconf}' before running this script.\n"
+echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/\${makedotconf}' before running this script.\n"
 sleep 5
 
 echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."; sleep 1; echo "5"; sleep 1; echo "4"; sleep 1; echo "3"; sleep 1; echo "2"; sleep 1; echo "1"; sleep 1
