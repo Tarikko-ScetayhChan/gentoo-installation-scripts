@@ -6,8 +6,7 @@ echo -e "-----------------------------------------------------\n|               
 
 echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-2.conf'\nbefore running this script.\n"; sleep 5
 
-echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/\${makedotconf}' before running this script.\n"
-sleep 5
+echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/\${makedotconf}' before running this script.\n"; sleep 5
 
 echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."; sleep 1; echo "5"; sleep 1; echo "4"; sleep 1; echo "3"; sleep 1; echo "2"; sleep 1; echo "1"; sleep 1
 
@@ -29,8 +28,11 @@ emerge-webrsync &&
 emerge --sync;
 
 echo -e "\n\e[32m==> Step 4 of 13: \e[0mTo copy 'make.conf'\n"; sleep 1
-mv -v /etc/portage/make.conf{,.bak};
-cp -v ${PATH_SCRIPTS_ROOT}/${makedotconf} /etc/portage/make.conf;
+cp -v /etc/portage/make.conf{,.bak};
+cat ${PATH_SCRIPTS_ROOT}/${makedotconf} > /etc/portage/make.conf;
+echo -e "\e[32m\n/etc/portage/make.conf\n-----------------------------------------------------\e[0m";
+cat /etc/portage/make.conf;
+echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 5 of 13: \e[0mTo install cpuid2cpuflags'\n"; sleep 1
 emerge cpuid2cpuflags &&
