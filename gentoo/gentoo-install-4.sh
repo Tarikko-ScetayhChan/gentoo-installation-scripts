@@ -12,8 +12,9 @@ echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
 
 echo -e "\n\e[32m==> Step 2 of 3: \e[0mTo unmount file systems\n"; sleep 1
 cd;
+swapoff /mnt/gentoo/swapfile;
 umount -l /mnt/gentoo/dev{/shm,/pts,};
-umount -R /mnt/gentoo;
+umount -lR /mnt/gentoo;
 
 echo -e "\n\e[32m==> Step 3 of 3: \e[0mTo reboot the system\n"; sleep 1
 reboot
