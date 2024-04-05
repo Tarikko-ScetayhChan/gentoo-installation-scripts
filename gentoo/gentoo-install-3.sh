@@ -14,7 +14,7 @@ echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
 source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf &&
 echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf\n-----------------------------------------------------\e[0m";
 cat ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 2 of 14: \e[0mTo build an initramfs\n"; sleep 1
 dracut --kver=${dracut_kver} --force &&

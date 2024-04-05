@@ -16,7 +16,7 @@ echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
 source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf &&
 echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf\n-----------------------------------------------------\e[0m";
 cat ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 2 of 20: \e[0mnet-setup\n"; sleep 1
 net-setup &&
