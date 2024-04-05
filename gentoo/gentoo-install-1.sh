@@ -12,7 +12,11 @@ echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."; s
 
 echo -e "\n\e[32m==> Step 1 of 20: \e[0mTo set the environment variables\n"; sleep 1
 export PATH_SCRIPTS_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" &&
+echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
 source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf &&
+echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf\n-----------------------------------------------------\e[0m";
+cat ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf;
+echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 2 of 20: \e[0mnet-setup\n"; sleep 1
 net-setup &&
@@ -22,10 +26,16 @@ cp -v /etc/resolv.conf{,.bak};
 
 echo -e "\n\e[32m==> Step 4 of 20: \e[0mTo replace nameserver in '/etc/resolv.conf'\n"; sleep 1
 sed -i --debug "s|nameserver.*|nameserver ${nameserver}|g" /etc/resolv.conf &&
+echo -e "\e[32m\n/etc/resolv.conf\n-----------------------------------------------------\e[0m";
+cat /etc/resolv.conf;
+echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 5 of 20: \e[0mTo generate the fdisk script\n"; sleep 1
 mkdir -v ${PATH_SCRIPTS_ROOT}/tmp &&
 echo -e "g\nn\n1\n\n+${size_efi_parition}\nt\n1\nn\n2\n\n+${size_boot_parition}\nn\n3\n\n+${size_swap_parition}\nn\n4\n\n\nw" > ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt &&
+echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt\n-----------------------------------------------------\e[0m";
+cat ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt;
+echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 6 of 20: \e[0mTo partition the disk\n"; sleep 1
 cat ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt | fdisk ${path_disk} &&
@@ -70,6 +80,9 @@ cp -v /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/re
 
 echo -e "\n\e[32m==> Step 16 of 20: \e[0mTo replace the sync-uri variable\n"; sleep 1
 sed -i --debug "s|rsync:\/\/rsync.gentoo.org\/gentoo-portage|${address_rsync}|g" /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
+echo -e "\e[32m\n/mnt/gentoo/etc/portage/repos.conf/gentoo.conf\n-----------------------------------------------------\e[0m";
+cat /mnt/gentoo/etc/portage/repos.conf/gentoo.conf;
+echo -e "\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 17 of 20: \e[0mTo copy DNS info\n"; sleep 1
 cp -v --dereference /etc/resolv.conf /mnt/gentoo/etc/ &&
