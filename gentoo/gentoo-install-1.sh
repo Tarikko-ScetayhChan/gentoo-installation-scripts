@@ -28,14 +28,14 @@ echo -e "\n\e[32m==> Step 4 of 20: \e[0mTo replace nameserver in '/etc/resolv.co
 sed -i --debug "s|nameserver.*|nameserver ${nameserver}|g" /etc/resolv.conf &&
 echo -e "\e[32m\n/etc/resolv.conf\n-----------------------------------------------------\e[0m";
 cat /etc/resolv.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 5 of 20: \e[0mTo generate the fdisk script\n"; sleep 1
 mkdir -v ${PATH_SCRIPTS_ROOT}/tmp &&
 echo -e "g\nn\n1\n\n+${size_efi_parition}\nt\n1\nn\n2\n\n+${size_boot_parition}\nn\n3\n\n+${size_swap_parition}\nn\n4\n\n\nw" > ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt &&
 echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt\n-----------------------------------------------------\e[0m";
 cat ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 6 of 20: \e[0mTo partition the disk\n"; sleep 1
 cat ${PATH_SCRIPTS_ROOT}/tmp/gentoo-install-fdisk.txt | fdisk ${path_disk} &&
@@ -82,7 +82,7 @@ echo -e "\n\e[32m==> Step 16 of 20: \e[0mTo replace the sync-uri variable\n"; sl
 sed -i --debug "s|rsync:\/\/rsync.gentoo.org\/gentoo-portage|${address_rsync}|g" /mnt/gentoo/etc/portage/repos.conf/gentoo.conf &&
 echo -e "\e[32m\n/mnt/gentoo/etc/portage/repos.conf/gentoo.conf\n-----------------------------------------------------\e[0m";
 cat /mnt/gentoo/etc/portage/repos.conf/gentoo.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 17 of 20: \e[0mTo copy DNS info\n"; sleep 1
 cp -v --dereference /etc/resolv.conf /mnt/gentoo/etc/ &&

@@ -31,7 +31,7 @@ echo -e "\n\e[32m==> Step 4 of 13: \e[0mTo copy 'make.conf'\n"; sleep 1
 cat ${PATH_SCRIPTS_ROOT}/${makedotconf} > /etc/portage/make.conf;
 echo -e "\e[32m\n/etc/portage/make.conf\n-----------------------------------------------------\e[0m";
 cat /etc/portage/make.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 5 of 13: \e[0mTo install cpuid2cpuflags'\n"; sleep 1
 emerge cpuid2cpuflags &&
@@ -41,7 +41,7 @@ cpuid2cpuflags &&
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags;
 echo -e "\e[32m\n/etc/portage/package.use/00cpu-flags\n-----------------------------------------------------\e[0m";
 cat /etc/portage/package.use/00cpu-flags;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 7 of 13: \e[0mTo install ccache, aria2 and sccache\n"; sleep 1
 emerge ccache aria2 &&
@@ -55,7 +55,7 @@ sed -i --debug "s/#RUSTC_WRAPPER/RUSTC_WRAPPER/g" /etc/portage/make.conf &&
 
 echo -e "\e[32m\n/etc/portage/make.conf\n-----------------------------------------------------\e[0m";
 cat /etc/portage/make.conf;
-echo -e "\e[32m-----------------------------------------------------\e[0m";
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 9 of 13: \e[0mTo update the @world set\n"; sleep 1
 emerge --verbose --update --deep --newuse @world;
