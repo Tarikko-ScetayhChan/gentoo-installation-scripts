@@ -47,7 +47,6 @@ emerge net-misc/dhcpcd &&
 
 echo -e "\n\e[32m==> Step 7 of 18: \e[0mTo enable dhcpcd service\n"; sleep 1
 rc-update add dhcpcd default &&
-rc-service dhcpcd start;
 
 echo -e "\n\e[32m==> Step 8 of 18: \e[0mTo set the root password\n"; sleep 1
 passwd &&
@@ -56,7 +55,11 @@ echo -e "\n\e[32m==> Step 9 of 18: \e[0mTo install sudo\n"; sleep 1
 emerge app-admin/sudo &&
 
 echo -e "\n\e[32m==> Step 10 of 18: \e[0mTo configure sudo\n"; sleep 1
-SED
+sed -i --debug "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g" /etc/sudoers &&
+echo -e "\e[32m\n/etc/sudoers\n-----------------------------------------------------\e[0m";
+cat /etc/sudoers;
+echo -e "\n\e[32m-----------------------------------------------------\e[0m";
+
 
 echo -e "\n\e[32m==> Step 11 of 18: \e[0mTo install system tools\n"; sleep 1
 emerge app-admin/sysklogd sys-process/cronie sys-apps/mlocate app-shells/bash-completion net-misc/chrony sys-fs/xfsprogs sys-fs/e2fsprogs sys-fs/dosfstools sys-fs/btrfs-progs sys-fs/zfs sys-fs/jfsutils sys-fs/dosfstools net-dialup/ppp net-wireless/iw net-wireless/wpa_supplicant ${extra_packages} &&
