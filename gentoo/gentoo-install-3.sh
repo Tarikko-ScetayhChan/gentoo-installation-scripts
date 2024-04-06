@@ -13,7 +13,7 @@ export PATH_SCRIPTS_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" &&
 echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
 source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf &&
 echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf\n-----------------------------------------------------\e[0m";
-cat ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf;
+cat -n ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-3.conf;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 2 of 18: \e[0mTo build an initramfs\n"; sleep 1
@@ -24,13 +24,13 @@ emerge genfstab &&
 cp -v /etc/fstab{,.bak};
 genfstab -U / >> /etc/fstab &&
 echo -e "\e[32m\n/etc/fstab\n-----------------------------------------------------\e[0m";
-cat /etc/fstab;
+cat -n /etc/fstab;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 4 of 18: \e[0mTo set the hostname\n"; sleep 1
 echo "${hostname}" > /etc/hostname &&
 echo -e "\e[32m\n/etc/hostname\n-----------------------------------------------------\e[0m";
-cat /etc/hostname;
+cat -n /etc/hostname;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 5 of 18: \e[0mTo set hosts\n"; sleep 1
@@ -39,7 +39,7 @@ echo "127.0.0.1	localhost" >> /etc/hosts &&
 echo "::1	localhost" >> /etc/hosts &&
 echo "127.0.1.1	${hostname}.localdomain	${hostname}" >> /etc/hosts &&
 echo -e "\e[32m\n/etc/hosts\n-----------------------------------------------------\e[0m";
-cat /etc/hosts;
+cat -n /etc/hosts;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 6 of 18: \e[0mTo install dhcpcd\n"; sleep 1
@@ -57,7 +57,7 @@ emerge app-admin/sudo &&
 echo -e "\n\e[32m==> Step 10 of 18: \e[0mTo configure sudo\n"; sleep 1
 sed -i --debug "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g" /etc/sudoers &&
 echo -e "\e[32m\n/etc/sudoers\n-----------------------------------------------------\e[0m";
-cat /etc/sudoers;
+cat -n /etc/sudoers;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 
@@ -85,7 +85,7 @@ grub-install --target=${grub_install_target} --efi-directory=/boot/efi --bootloa
 echo -e "\n\e[32m==> Step 17 of 18: \e[0mTo generate grub configuration\n"; sleep 1
 grub-mkconfig -o /boot/grub/grub.cfg &&
 echo -e "\e[32m\n/boot/grub/grub.cfg\n-----------------------------------------------------\e[0m";
-cat /boot/grub/grub.cfg;
+cat -n /boot/grub/grub.cfg;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 18 of 18: \e[0mTo exit the chrooting\n"; sleep 1
