@@ -1,0 +1,5 @@
+#!/bin/bash
+
+FINB_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+export PATH=$PATH:$FINB_PATH:$FINB_PATH/core
