@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Do not run this script singly.
+
+FINB_CURRENT_SCRIPT=`basename "$0"`
+echo -e "[\e[32mInfo\e[0m] Gotten the current script name (FINB_CURRENT_SCRIPT=${FINB_CURRENT_SCRIPT})."

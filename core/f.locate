@@ -1,3 +1,6 @@
 #!/bin/bash
 
+# Do not run this script singly.
+
 FINB_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+echo -e "[\e[32mInfo\e[0m] Located the finb path (FINB_PATH=${FINB_PATH})."

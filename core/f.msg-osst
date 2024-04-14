@@ -1,0 +1,3 @@
+#!/bin/bash
+
+f.msg warning "Do not run multiple finb scripts simultaneously, or there may be unexpected errors."

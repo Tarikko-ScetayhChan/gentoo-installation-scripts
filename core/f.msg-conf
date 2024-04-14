@@ -1,0 +1,3 @@
+#!/bin/bash
+
+f.msg warning "Edit the configuration before running the script."

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo
 echo -e " _______________________________________________________________"
 echo -e "|                   \e[1mfinb\e[0m — \e[1mf\e[0minb \e[1mi\e[0ms \e[1mn\e[0mot \e[1mb\e[0minary                   |"
 echo -e "|             <github.com/Tarikko-ScetayhChan/finb>             |"
@@ -42,3 +43,4 @@ echo -e "| License along with finb. If not, see                          |"
 echo -e "| <https://www.gnu.org/licenses/>.                              |"
 echo -e "|                                                               |"
 echo -e "|_______________________________________________________________|"
+echo
