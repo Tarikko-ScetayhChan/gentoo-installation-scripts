@@ -11,12 +11,12 @@ echo -e "[\e[32mInfo\e[0m] Gotten the current script name (FINB_CURRENT_SCRIPT=$
 sleep 1
 
 echo
-source ${FINB_PATH}/core/f.loadcore
+source ${FINB_PATH}/core/finb.loadcore
 sleep 1
 
 # 加载脚本配置
 
-f.scripthead ${FINB_CURRENT_SCRIPT}
+finb.scripthead ${FINB_CURRENT_SCRIPT}
 sleep 1
 
 # 检查变量
