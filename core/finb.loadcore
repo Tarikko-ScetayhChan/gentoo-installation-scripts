@@ -6,4 +6,4 @@ FINB_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 export PATH=$PATH:$FINB_PATH:$FINB_PATH/core
 finb.msg info "Located the core commands."
-#echo -e "[\e[32mInfo\e[0m] Located the core commands."
+#echo -e "[\e[032mInfo\e[0m] Located the core commands."
