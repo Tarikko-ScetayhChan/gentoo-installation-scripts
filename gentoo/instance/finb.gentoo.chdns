@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sed -i --debug "s|nameserver.*|nameserver $1|g" /etc/resolv.conf
