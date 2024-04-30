@@ -6,16 +6,16 @@ echo -e "-----------------------------------------------------\n|               
 
 echo -e "\e[33mWarning: \e[0mConnect to the internet before running this\nscript.\n"; sleep 5
 
-echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf'\nbefore running this script.\n"; sleep 5
+echo -e "\e[33mWarning: \e[0mEdit '${PATH_SCRIPTS_ROOT}/env/gentoo-install-env.conf'\nbefore running this script.\n"; sleep 5
 
 echo -e "\e[33mWarning: \e[0mYou will have 5 seconds to cancel this\nscript."; sleep 1; echo "5"; sleep 1; echo "4"; sleep 1; echo "3"; sleep 1; echo "2"; sleep 1; echo "1"; sleep 1
 
 echo -e "\n\e[32m==> Step 1 of 20: \e[0mTo set the environment variables\n"; sleep 1
 export PATH_SCRIPTS_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" &&
 echo -e "PATH_SCRIPTS_ROOT=${PATH_SCRIPTS_ROOT}";
-source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf &&
-echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf\n-----------------------------------------------------\e[0m";
-cat -n ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env-1.conf;
+source ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env.conf &&
+echo -e "\e[32m\n${PATH_SCRIPTS_ROOT}/env/gentoo-install-env.conf\n-----------------------------------------------------\e[0m";
+cat -n ${PATH_SCRIPTS_ROOT}/env/gentoo-install-env.conf;
 echo -e "\n\e[32m-----------------------------------------------------\e[0m";
 
 echo -e "\n\e[32m==> Step 2 of 20: \e[0mnet-setup\n"; sleep 1
