@@ -37,7 +37,7 @@ CXXFLAGS="${COMMON_FLAGS}"
 #FCFLAGS="${COMMON_FLAGS}"
 #FFLAGS="${COMMON_FLAGS}"
 #LDFLAGS="${COMMON_FLAGS} -Wl,-O2 -Wl,--as-needed -Wl,--hash-style=gnu -Wl,--sort-common -Wl,--strip-all"
-#MAKEOPTS="-j8"
+#MAKEOPTS="-j1"
 
 # WARNING: Changing your CHOST is not something that should be done lightly.
 # Please consult https://wiki.gentoo.org/wiki/Changing_the_CHOST_variable before changing.
