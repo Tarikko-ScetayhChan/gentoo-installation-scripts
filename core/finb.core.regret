@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo -en " \e[093m*\e[0m Starting in: "
+sleep 1
+echo -en "\e[91m5\e[0m"
+sleep 1
+echo -en " \e[91m4\e[0m"
+sleep 1
+echo -en " \e[91m3\e[0m"
+sleep 1
+echo -en " \e[91m2\e[0m"
+sleep 1
+echo -en " \e[91m1\e[0m"
+sleep 1
+echo

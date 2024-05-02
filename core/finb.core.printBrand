@@ -17,7 +17,7 @@ echo -en "$1"
 for ((i=1; i<=${blankAside}; i++)); do
 	echo -en " "
 done
-if [ $[ ${#1} % 2 ] == 0 ]
+if [[ $[ ${#1} % 2 ] == 0 ]]
 then
 	echo -en " "
 else

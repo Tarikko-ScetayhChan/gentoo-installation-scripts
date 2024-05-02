@@ -2,44 +2,44 @@
 
 # locate finb path
 echo
-FINB_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
-echo -e "[\e[032mInfo\e[0m] Located the finb path (FINB_PATH=${FINB_PATH})."
+finbPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+echo -e " \e[032m*\e[0m Gotten the finb path \e[1m\e[093m${finbPath}\e[0m."
 
 # get current script name
 echo
-FINB_GENTOO_CURRENT_SCRIPT=`basename "$0"`
-echo -e "[\e[032mInfo\e[0m] Gotten the current script name (FINB_GENTOO_CURRENT_SCRIPT=${FINB_GENTOO_CURRENT_SCRIPT})."
+finbGentooScriptName=`basename "$0"`
+echo -e " \e[032m*\e[0m Gotten the script name \e[1m\e[093m${finbGentooScriptName}\e[0m."
 
 # load finb core
 echo
-chmod +x ${FINB_PATH}/core/*
-source ${FINB_PATH}/core/finb.loadcore
+chmod +x ${finbPath}/core/*
+source ${finbPath}/core/finb.core.loadCore
 
 # load script configuration
 echo
-source ${0%/*}/conf/*
-FINB_GENTOO_TOTAL_STEP=114514
-FINB_GENTOO_CURRENT_STEP=0
-finb.msg info "Loaded the script configuration."
+if [ -f "${0%/*}/conf/finb-gentoo-install.conf" ]
+then
+    source ${0%/*}/conf/finb-gentoo-install.conf
+    finbGentooTotalStep=114514
+    finbGentooCurrentStep=0
+    echo -e " \e[032m*\e[0m Loaded the configuration \e[1m\e[093m${0%/*}/conf/finb-gentoo-install.conf\e[0m."
+else
+    echo -e " \e[091m*\e[0m Cannot find the configuration \e[1m\e[093m${0%/*}/conf/finb-gentoo-install.conf\e[0m! You need to download finb again and check the MD5 sum!"
+    exit 1
+fi
 
 # check variables
 
 # print scripthead
-finb.scripthead ${FINB_GENTOO_CURRENT_SCRIPT}
-sleep 3
+finb.core.printBrand ${finbGentooScriptName}
 
-# set and print total number of steps
-finb.msg.settotalstep ${FINB_GENTOO_TOTAL_STEP}
-sleep 3
-echo
+finb.core.printTotalStep ${finbGentooTotalStep}
 
 # remind to edit configuration
-finb.msg.conf
-sleep 3
-echo
+finb.core.remindConf
 
 # wait 5 seconds for regret
-finb.msg.regret
+finb.core.regret
 
 #################################################################
 
