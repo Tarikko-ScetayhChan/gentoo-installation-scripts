@@ -52,8 +52,8 @@ EMERGE_DEFAULT_OPTS="--with-bdeps=y --verbose=y --load-average --keep-going --de
 # NOTE: This stage was built with the bindist Use flag enabled
 #USE=""
 ACCEPT_LICENSE="*"
-#ACCEPT_KEYWORDS="~amd64"
-ACCEPT_KEYWORDS="~arm64"
+#ACCEPT_KEYWORDS="amd64"
+ACCEPT_KEYWORDS="arm64"
 L10N="en-US zh-CN en zh"
 LINGUAS="en-US zh-CN en zh"
 AUTO_CLEAN="yes"
