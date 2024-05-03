@@ -5,11 +5,12 @@ echo -e " \e[032m*\e[0m Located finb path: \e[1m\e[093m${finb_path}\e[0m"
 
 if [ -f "${finb_path}/core/finb.core.loadCore" ]
 then
+    chmod +x ${finb_path}/core/*
     source ${finb_path}/core/finb.core.loadCore
-    echo -e " \e[032m*\e[0m Loaded core: \e[1m\e[093m${finb_path}/core/finb.core.loadCore\e[0m"
 else
-    echo -e " \e[091m*\e[0m Failed to load core: \e[1m\e[093m${finb_path}/gentoo/conf/finb-gentoo-install.conf\e[0m"
+    echo -e " \e[091m*\e[0m Failed to load core: \e[1m\e[093m${finb_path}/core/finb.core.loadCore\e[0m"
     echo -e " \e[091m*\e[0m You should download finb again and check MD5 sum!"
+    time
     exit 1
 fi
 
@@ -20,7 +21,7 @@ then
 else
     echo -e " \e[091m*\e[0m Failed to load configuration: \e[1m\e[093m${finb_path}/gentoo/conf/finb-gentoo-install.conf\e[0m"
     echo -e " \e[091m*\e[0m You should download finb again and check MD5 sum!"
-    exit 1
+    source finb.core.exit 1
 fi
 
 # check variables

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-echo -e " \e[032m*\e[0m \e[1m\e[093m$1\e[0m step(s) totally."
+echo -e " \e[032m*\e[0m Total step(s): \e[1m\e[093m$1\e[0m"
 sleep 3
 echo
