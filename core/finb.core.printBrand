@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo
 echo -e " _______________________________________________________________"
 echo -e "|                   \e[1mfinb\e[0m — \e[1mf\e[0minb \e[1mi\e[0ms \e[1mn\e[0mot \e[1mb\e[0minary                   |"
 echo -e "|             <github.com/Tarikko-ScetayhChan/finb>             |"
@@ -17,8 +16,7 @@ echo -en "$1"
 for ((i=1; i<=${blankAside}; i++)); do
 	echo -en " "
 done
-if [[ $[ ${#1} % 2 ] == 0 ]]
-then
+if [[ $[ ${#1} % 2 ] == 0 ]]; then
 	echo -en " "
 else
 	echo -en ""
@@ -43,4 +41,3 @@ echo -e "| License along with finb. If not, see                          |"
 echo -e "| <https://www.gnu.org/licenses/>.                              |"
 echo -e "|                                                               |"
 echo -e "|_______________________________________________________________|"
-echo

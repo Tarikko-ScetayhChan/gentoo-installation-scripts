@@ -1,8 +1,8 @@
 #!/bin/bash
 
-expr $num + 1 &> /dev/null
-if [ $? -eq 0 ]
-then
+expr $1 + 1 &> /dev/null
+
+if [ $? -eq 0 ]; then
     time
     exit $1
 else
