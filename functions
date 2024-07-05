@@ -1,4 +1,6 @@
 function PrintBrand() {
+    echo
+
     echo -e " _______________________________________________________________"
     echo -e "|                  gentoo-installation-scripts                  |"
     echo -e "| <github.com/Tarikko-ScetayhChan/gentoo-installation-scripts>  |"
@@ -50,6 +52,8 @@ function PrintBrand() {
     echo -e "|                                                               |"
     echo -e "|_______________________________________________________________|"
 
+    echo
+    
     sleep 3
 }
 
@@ -63,6 +67,7 @@ function WaitForRegret() {
         gis_functions_WaitForRegret_i=$((${gis_functions_WaitForRegret_i}-1))
         sleep 1
     done
+    echo
 }
 
 function PrintStep() {
@@ -79,6 +84,7 @@ function Print256Colors() {
             fi
         done
     done
+    echo
     sleep 3
 }
 
@@ -89,6 +95,7 @@ function PrintStepNumber() {
 
 function RemindConfiguration() {
     echo -e " \e[093m*\e[0m Edit the configuration before running the script."
+    echo
     sleep 3
 }
 
