@@ -58,6 +58,7 @@ date
 PrintStepOff 9 18 "To set the date and the time"
 
 PrintStepOn 10 18 "To enter '/mnt/gentoo'"
+export gis_install_originalDirectory=$(pwd)
 cd /mnt/gentoo
 pwd
 PrintStepOff 10 18 "To enter '/mnt/gentoo'"
@@ -94,6 +95,7 @@ mount -v --make-slave /mnt/gentoo/run
 PrintStepOff 16 18 "To mount the necessary filesystems"
 
 PrintStepOn 17 18 "To copy scripts into the new root"
+cd ${gis_install_originalDirectory}
 mkdir -pv /mnt/gentoo/gentoo-installation-scripts
 cp -rv ./* /mnt/gentoo/gentoo-installation-scripts/
 PrintStepOff 17 18 "To copy scripts into the new root"
