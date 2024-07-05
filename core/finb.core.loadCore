@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Use `source finb.core.loadcore` to load the core commands.
-
-finbPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export PATH=$PATH:$finbPath:$finbPath/core
-echo -e " \e[032m*\e[0m Loaded core: \e[1m\e[093m${finb_path}/core\e[0m"
-ls -m $finbPath/core

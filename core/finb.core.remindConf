@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo -e " \e[093m*\e[0m Edit the configuration before running the script."

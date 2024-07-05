@@ -1,0 +1,109 @@
+function PrintBrand() {
+    echo -e " _______________________________________________________________"
+    echo -e "|                  gentoo-installation-scripts                  |"
+    echo -e "| <github.com/Tarikko-ScetayhChan/gentoo-installation-scripts>  |"
+    echo -e "|                                                               |"
+    echo -e "|              Copyright 2024 Tarikko-ScetayhChan               |"
+    echo -e "|                  <weychon_lyon@outlook.com>                   |"
+    echo -e "|                   <tarikko-scetayhchan.top>                   |"
+    echo -e "|===============================================================|"
+    echo -en "|"
+
+    blankAside=$[ ( 63 - ${#1} ) / 2 ]
+
+    for ((i=1; i<=${blankAside}; i++)); do
+	    echo -en " "
+    done
+
+    echo -en "$1"
+
+    for ((i=1; i<=${blankAside}; i++)); do
+	    echo -en " "
+    done
+
+    if [[ $[ ${#1} % 2 ] == 0 ]]; then
+	echo -en " "
+    else
+	echo -en ""
+    fi
+
+    echo -e "|"
+    echo -e "|===============================================================|"
+    echo -e "|                                                               |"
+    echo -e "| This file is part of finb.                                    |"
+    echo -e "|                                                               |"
+    echo -e "| finb is free software: you can redistribute it and/or modify  |"
+    echo -e "| it under the terms of the GNU General Public License as       |"
+    echo -e "| published by the Free Software Foundation, either version 3   |"
+    echo -e "| of the License, or (at your option) any later version.        |"
+    echo -e "|                                                               |"
+    echo -e "| finb is distributed in the hope that it will be useful, but   |" 
+    echo -e "| WITHOUT ANY WARRANTY; without even the implied warranty of    |"
+    echo -e "| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the  |"
+    echo -e "| GNU General Public License for more details.                  |"
+    echo -e "|                                                               |"
+    echo -e "| You should have received a copy of the GNU General Public     |"
+    echo -e "| License along with finb. If not, see                          |"
+    echo -e "| <https://www.gnu.org/licenses/>.                              |"
+    echo -e "|                                                               |"
+    echo -e "|_______________________________________________________________|"
+
+    sleep 3
+}
+
+function WaitForRegret() {
+    echo -en " \e[093m*\e[0m Starting in: "
+    sleep 1
+    echo -en "\b"
+    finb_core_regret_i=5
+    until [[ ${finb_core_regret_i} == 0 ]]; do
+        echo -en " \e[91m${finb_core_regret_i}\e[0m"
+        finb_core_regret_i=$((${finb_core_regret_i}-1))
+        sleep 1
+    done
+}
+
+function PrintStep() {
+    echo -e "\n\e[32m==> Step $1 of $2: \e[0m$3\n"
+    sleep 1
+}
+
+function Print256Colors() {
+    for finb_core_print256colors_fgbg in 38 48; do
+        for finb_core_print256colors_color in {0..255}; do
+            printf "\e[${finb_core_print256colors_fgbg};5;%sm  %3s  \e[0m" $finb_core_print256colors_color $finb_core_print256colors_color
+            if [[ $((($finb_core_print256colors_color + 1) % 6)) == 4 ]]; then
+                echo
+            fi
+        done
+    done
+    sleep 3
+}
+
+function PrintStepNumber() {
+    echo -e " \e[032m*\e[0m Total step(s): \e[1m\e[093m$1\e[0m"
+    sleep 3
+}
+
+function RemindConfiguration() {
+    echo -e " \e[093m*\e[0m Edit the configuration before running the script."
+    sleep 3
+}
+
+function PrintStepOn() {
+    echo
+    echo -e "\e[032m>>>\e[0m Started step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m"
+    echo -en ">>> "
+    date
+    sleep 0.5
+    echo
+}
+
+function PrintStepOff() {
+    echo
+    echo -e "\e[032m>>>\e[0m Ended step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m"
+    echo -en ">>> "
+    date
+    sleep 0.5
+    echo
+}
