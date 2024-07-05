@@ -30,20 +30,22 @@ function PrintBrand() {
     echo -e "|"
     echo -e "|===============================================================|"
     echo -e "|                                                               |"
-    echo -e "| This file is part of finb.                                    |"
+    echo -e "| This file is part of gentoo-installation-scripts.             |"
     echo -e "|                                                               |"
-    echo -e "| finb is free software: you can redistribute it and/or modify  |"
-    echo -e "| it under the terms of the GNU General Public License as       |"
-    echo -e "| published by the Free Software Foundation, either version 3   |"
-    echo -e "| of the License, or (at your option) any later version.        |"
+    echo -e "| gentoo-installation-scripts is free software: you can         |"
+    echo -e "| redistribute it and/or modify it under the terms of the GNU   |"
+    echo -e "| General Public License as published by the Free Software      |"
+    echo -e "| Foundation, either version 3 of the License, or (at your      |"
+    echo -e "| option) any later version.                                    |"
     echo -e "|                                                               |"
-    echo -e "| finb is distributed in the hope that it will be useful, but   |" 
-    echo -e "| WITHOUT ANY WARRANTY; without even the implied warranty of    |"
-    echo -e "| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the  |"
-    echo -e "| GNU General Public License for more details.                  |"
+    echo -e "| gentoo-installation-scripts is distributed in the hope that   |" 
+    echo -e "| it will be useful, but WITHOUT ANY WARRANTY; without even the |"
+    echo -e "| implied warranty of MERCHANTABILITY or FITNESS FOR A          |"
+    echo -e "| PARTICULAR PURPOSE. See the GNU General Public License for    |"
+    echo -e "| more details.                                                 |"
     echo -e "|                                                               |"
     echo -e "| You should have received a copy of the GNU General Public     |"
-    echo -e "| License along with finb. If not, see                          |"
+    echo -e "| License along with gentoo-installation-scripts. If not, see   |"
     echo -e "| <https://www.gnu.org/licenses/>.                              |"
     echo -e "|                                                               |"
     echo -e "|_______________________________________________________________|"
@@ -55,10 +57,10 @@ function WaitForRegret() {
     echo -en " \e[093m*\e[0m Starting in: "
     sleep 1
     echo -en "\b"
-    finb_core_regret_i=5
-    until [[ ${finb_core_regret_i} == 0 ]]; do
-        echo -en " \e[91m${finb_core_regret_i}\e[0m"
-        finb_core_regret_i=$((${finb_core_regret_i}-1))
+    gis_functions_WaitForRegret_i=5
+    until [[ ${gis_functions_WaitForRegret_i} == 0 ]]; do
+        echo -en " \e[91m${gis_functions_WaitForRegret_i}\e[0m"
+        gis_functions_WaitForRegret_i=$((${gis_functions_WaitForRegret_i}-1))
         sleep 1
     done
 }
@@ -69,10 +71,10 @@ function PrintStep() {
 }
 
 function Print256Colors() {
-    for finb_core_print256colors_fgbg in 38 48; do
-        for finb_core_print256colors_color in {0..255}; do
-            printf "\e[${finb_core_print256colors_fgbg};5;%sm  %3s  \e[0m" $finb_core_print256colors_color $finb_core_print256colors_color
-            if [[ $((($finb_core_print256colors_color + 1) % 6)) == 4 ]]; then
+    for gis_functions_Print256Colors_fgbg in 38 48; do
+        for gis_functions_Print256Colors_color in {0..255}; do
+            printf "\e[${gis_functions_Print256Colors_fgbg};5;%sm  %3s  \e[0m" $gis_functions_Print256Colors_color $gis_functions_Print256Colors_color
+            if [[ $((($gis_functions_Print256Colors_color + 1) % 6)) == 4 ]]; then
                 echo
             fi
         done
