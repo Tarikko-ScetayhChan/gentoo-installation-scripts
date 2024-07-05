@@ -17,7 +17,9 @@ PrintStep 1 26 "To load settings"
 PrintStep 2 26 "To install the latest snapshot"
 rm -rf -v /var/db/repos/gentoo/metadata/timestamp.x
 emerge-webrsync
-emerge --sync
+if [ ${gis_install_whetherToRunEmergeSync} != no ]; then
+    emerge --sync
+fi
 PrintStep 2 26 "To install the latest snapshot"
 
 PrintStep 3 26 "To deploy 'make.conf'"
