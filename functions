@@ -101,18 +101,14 @@ function RemindConfiguration() {
 
 function PrintStepOn() {
     echo
-    echo -e "\e[032m>>>\e[0m Started step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m"
-    echo -en ">>> "
-    date
+    echo -e " \e[032m>>>\e[0m Started step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m ($(date))"
     sleep 0.5
     echo
 }
 
 function PrintStepOff() {
     echo
-    echo -e "\e[032m>>>\e[0m Ended step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m"
-    echo -en ">>> "
-    date
+    echo -en " \e[032m<<<\e[0m Ended step: (\e[93m$1\e[0m of \e[93m$2\e[0m) \e[92m$3\e[0m ($(date))"
     sleep 0.5
     echo
 }
