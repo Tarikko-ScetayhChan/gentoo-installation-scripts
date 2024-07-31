@@ -114,6 +114,9 @@ emerge app-admin/sysklogd sys-process/cronie sys-apps/mlocate app-shells/bash-co
 PrintStepOff 19 26 "To install system tools and extra packages"
 
 PrintStepOn 20 26 "To enable system tool services"
+rc-update add ntp-client default
+ntpdate -b -u 0.gentoo.pool.ntp.org
+rc-update add ntpd default
 rc-update add sysklogd default 
 rc-update add cronie default
 rc-update add sshd default
