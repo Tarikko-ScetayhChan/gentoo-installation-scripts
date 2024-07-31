@@ -110,7 +110,7 @@ sed -i "s/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g" /etc/sudoers
 PrintStepOff 18 26 "To configure sudo"
 
 PrintStepOn 19 26 "To install system tools and extra packages"
-emerge app-admin/sysklogd sys-process/cronie sys-apps/mlocate app-shells/bash-completion net-misc/chrony sys-fs/xfsprogs sys-fs/e2fsprogs sys-fs/dosfstools sys-fs/btrfs-progs sys-fs/zfs sys-fs/jfsutils sys-fs/dosfstools net-dialup/ppp net-wireless/iw net-wireless/wpa_supplicant ${gis_install_extraPackages}
+emerge app-admin/sysklogd sys-process/cronie sys-apps/mlocate app-shells/bash-completion net-misc/chrony sys-fs/xfsprogs sys-fs/e2fsprogs sys-fs/dosfstools sys-fs/btrfs-progs sys-fs/zfs sys-fs/jfsutils sys-fs/dosfstools net-misc/ntp net-dialup/ppp net-wireless/iw net-wireless/wpa_supplicant ${gis_install_extraPackages}
 PrintStepOff 19 26 "To install system tools and extra packages"
 
 PrintStepOn 20 26 "To enable system tool services"
