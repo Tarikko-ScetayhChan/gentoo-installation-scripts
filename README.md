@@ -1,1 +1,1 @@
-#  gentoo-installation-scripts - as its name implies
+#  gentoo-installation-scripts - Installation scripts for Gentoo
