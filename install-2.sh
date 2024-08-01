@@ -132,7 +132,7 @@ emerge sys-boot/grub
 PrintStepOff 22 26 "To install grub"
 
 PrintStepOn 23 26 "To install bootloader"
-grub-install --target=${gis_install_grubInstallTarget} --efi-directory=/boot/efi --bootloader-id=${YupyeGRUB}
+grub-install --target=${gis_install_grubInstallTarget} --efi-directory=/boot/efi --bootloader-id=${gis_install_bootloaderId}
 PrintStepOff 23 26 "To install bootloader"
 
 PrintStepOn 24 26 "To generate grub configuration"
